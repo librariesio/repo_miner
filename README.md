@@ -1,8 +1,15 @@
 # RepoMiner
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/repo_miner`. To experiment with that code, run `bin/console` for an interactive prompt.
+RepoMiner is a ruby library designed to mine time sensitive information from git repositories. Things like:
 
-TODO: Delete this and the text above, and describe your gem
+- When dependencies are added/updated/removed
+- When license information changes
+- Changes in frequency of commits over time
+- Changes in timezones of commits over time
+
+This is a new and incomplete project that's under active development.
+
+I'll be live streaming some of the development of this project on twitch: https://www.twitch.tv/andrew_nesbitt
 
 ## Installation
 
@@ -32,10 +39,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/andrew/repo_miner. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/librariesio/repo_miner. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+The gem is available as open source under the terms of the [AGPL 3 License](https://opensource.org/licenses/AGPL-3.0).
