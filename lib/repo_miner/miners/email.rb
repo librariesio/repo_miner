@@ -11,9 +11,6 @@ module RepoMiner
           committer: committer_email,
           author: author_email
         })
-
-        # return the commit
-        commit
       end
     end
   end
