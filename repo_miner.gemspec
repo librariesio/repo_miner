@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Mine repositories for interesting changes over time"
   spec.homepage      = "https://github.com/librariesio/repo_miner"
-  spec.license       = "APGL-3.0"
+  spec.license       = "AGPL-3.0"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
