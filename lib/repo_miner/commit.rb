@@ -13,6 +13,7 @@ module RepoMiner
     def analyse
       # for every miner (except Base) analyse commit
       Miners::Email.new.analyse(self)
+      Miners::Dependencies.new.analyse(self)
 
       self
     end
