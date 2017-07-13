@@ -5,7 +5,21 @@ RSpec.describe RepoMiner do
     expect(RepoMiner::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(RepoMiner.analyse('../libraries').length).to eq(4792)
+  context "when mining the Libraries.io repository" do
+    let(:analyser) { RepoMiner.analyse('../libraries') }
+
+    it "does something useful" do
+      expect(analyser.length).to eq(4792)
+    end
+
+    it "mines email addresses" do
+      initial_commit = analyser.first
+      expect(initial_commit.data).to eq({
+        :email => {
+          committer: 'andrewnez@gmail.com',
+          author: 'andrewnez@gmail.com'
+        }
+      })
+    end
   end
 end
