@@ -6,6 +6,6 @@ RSpec.describe RepoMiner do
   end
 
   it "does something useful" do
-    expect(false).to eq(true)
+    expect(RepoMiner.analyse('../libraries').length).to eq(4792)
   end
 end
