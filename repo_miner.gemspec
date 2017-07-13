@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "repo_miner"
   spec.version       = RepoMiner::VERSION
   spec.authors       = ["Andrew Nesbitt"]
-  spec.email         = ["andrewnez@gmail.com"]
+  spec.email         = ["andrew@libraries.io"]
 
   spec.summary       = "Mine repositories for interesting changes over time"
   spec.homepage      = "https://github.com/librariesio/repo_miner"
