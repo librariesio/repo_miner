@@ -21,5 +21,21 @@ module RepoMiner
     def add_data(key, miner_data)
       data[key] = miner_data
     end
+
+    def content_before(file_path)
+      content_for_commit(commit.parents[0], file_path)
+    end
+
+    def content_after(file_path)
+      content_for_commit(commit, file_path)
+    end
+
+    private
+
+    def content_for_commit(rugged_commit, file_path)
+      path = rugged_commit.tree.path(file_path)
+      blob = repository.repository.lookup(path[:oid])
+      blob.content
+    end
   end
 end

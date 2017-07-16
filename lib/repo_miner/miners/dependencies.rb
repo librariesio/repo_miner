@@ -21,9 +21,7 @@ module RepoMiner
         # Added manifest files
         added_manifests = []
         added_manifest_paths.each do |manifest_path|
-          path = commit.commit.tree.path(manifest_path)
-          blob = commit.repository.repository.lookup(path[:oid])
-          manifest = Bibliothecary.analyse_file(manifest_path, blob.content)
+          manifest = Bibliothecary.analyse_file(manifest_path, commit.content_after(manifest_path))
 
           new_manifest = manifest.first
 
@@ -53,15 +51,11 @@ module RepoMiner
         # Modified manifest files
         modified_manifests = []
         modified_manifest_paths.each do |manifest_path|
-          before_path = commit.commit.parents[0].tree.path(manifest_path)
-          before_blob = commit.repository.repository.lookup(before_path[:oid])
-          before_manifest = Bibliothecary.analyse_file(manifest_path, before_blob.content)
+          before_manifest = Bibliothecary.analyse_file(manifest_path, commit.content_before(manifest_path))
 
           before_modified_manifest = before_manifest.first
 
-          after_path = commit.commit.tree.path(manifest_path)
-          after_blob = commit.repository.repository.lookup(after_path[:oid])
-          after_manifest = Bibliothecary.analyse_file(manifest_path, after_blob.content)
+          after_manifest = Bibliothecary.analyse_file(manifest_path, commit.content_after(manifest_path))
 
           after_modified_manifest = after_manifest.first
 
@@ -109,9 +103,7 @@ module RepoMiner
         # Removed manifest files
         removed_manifests = []
         removed_manifest_paths.each do |manifest_path|
-          path = commit.commit.parents[0].tree.path(manifest_path)
-          blob = commit.repository.repository.lookup(path[:oid])
-          manifest = Bibliothecary.analyse_file(manifest_path, blob.content)
+          manifest = Bibliothecary.analyse_file(manifest_path, commit.content_before(manifest_path))
 
           removed_manifest = manifest.first
 
