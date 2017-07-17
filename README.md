@@ -29,7 +29,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Make a new repository:
+
+```ruby
+repository = RepoMiner::Repository.new('/path/to/git/repo')
+```
+
+Analyse all commits for a given branch:
+
+```ruby
+commits = repository.analyse('master')
+```
+
+See mined dependency data for a given commit:
+
+```ruby
+commits.last #=> RepoMiner::Commit:0x007fd87fdf1150(message: "Fixes 1597", sha: c656e48ada19c6c83f7705893f0a73cfc1844abf, data: {:email=>{:committer=>"andrewnez@gmail.com", :author=>"andrewnez@gmail.com"}, :dependencies=>{:added_manifests=>[], :modified_manifests=>[{:path=>"Gemfile", :platform=>"rubygems", :added_dependencies=>[], :modified_dependencies=>[], :removed_dependencies=>[{:name=>"sass", :requirement=>"= 3.4.24", :type=>:runtime}]}, {:path=>"Gemfile.lock", :platform=>"rubygems", :added_dependencies=>[{:name=>"sass-listen", :requirement=>"4.0.0", :type=>"runtime"}], :modified_dependencies=>[{:name=>"commonmarker", :requirement=>"0.16.8", :type=>"runtime", :previous_requirement=>"0.16.7"}, {:name=>"gitlab", :requirement=>"4.2.0", :type=>"runtime", :previous_requirement=>"4.1.0"}, {:name=>"rack-cors", :requirement=>"1.0.0", :type=>"runtime", :previous_requirement=>"0.4.1"}, {:name=>"sass", :requirement=>"3.5.1", :type=>"runtime", :previous_requirement=>"3.4.24"}, {:name=>"sassc", :requirement=>"1.11.4", :type=>"runtime", :previous_requirement=>"1.11.2"}], :removed_dependencies=>[]}], :removed_manifests=>[]}})
+```
 
 ## Development
 
