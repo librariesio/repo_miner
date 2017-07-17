@@ -1,4 +1,8 @@
 require "bundler/setup"
+
+require "simplecov"
+SimpleCov.start
+
 require "repo_miner"
 
 RSpec.configure do |config|
