@@ -1,17 +1,24 @@
 module RepoMiner
   class Commit
     attr_reader :repository
-    attr_reader :commit
+    attr_reader :rugged_commit
     attr_accessor :data
 
-    def initialize(repository, commit)
+    def initialize(repository, rugged_commit)
       @repository = repository
-      @commit = commit
+      @rugged_commit = rugged_commit
       @data = {}
     end
 
+    def message
+      rugged_commit.message.strip
+    end
+
+    def sha
+      rugged_commit.oid
+    end
+
     def analyse
-      # for every miner (except Base) analyse commit
       Miners::Email.new.analyse(self)
       Miners::Dependencies.new.analyse(self)
 
@@ -23,11 +30,15 @@ module RepoMiner
     end
 
     def content_before(file_path)
-      content_for_commit(commit.parents[0], file_path)
+      content_for_commit(rugged_commit.parents[0], file_path)
     end
 
     def content_after(file_path)
-      content_for_commit(commit, file_path)
+      content_for_commit(rugged_commit, file_path)
+    end
+
+    def inspect
+      "RepoMiner::Commit:#{"0x00%x" % (object_id << 1)}(message: #{message}, sha: #{sha}, data: #{data})"
     end
 
     private

@@ -3,8 +3,8 @@ module RepoMiner
     class Email
       def analyse(commit)
         # analyse commit
-        committer_email = commit.commit.committer[:email]
-        author_email = commit.commit.author[:email]
+        committer_email = commit.rugged_commit.committer[:email]
+        author_email = commit.rugged_commit.author[:email]
 
         # attach mined info to commit
         commit.add_data(:email, {

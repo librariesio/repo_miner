@@ -4,7 +4,7 @@ module RepoMiner
   module Miners
     class Dependencies
       def analyse(commit)
-        all_paths = blob_paths(commit.commit)
+        all_paths = blob_paths(commit.rugged_commit)
 
         added_paths = all_paths.select{|path| path[:status] == :added }.map{|path| path[:path] }
         modified_paths = all_paths.select{|path| path[:status] == :modified }.map{|path| path[:path] }
@@ -51,11 +51,9 @@ module RepoMiner
         modified_manifests = []
         modified_manifest_paths.each do |manifest_path|
           before_manifest = Bibliothecary.analyse_file(manifest_path, commit.content_before(manifest_path))
-
           before_modified_manifest = before_manifest.first
 
           after_manifest = Bibliothecary.analyse_file(manifest_path, commit.content_after(manifest_path))
-
           after_modified_manifest = after_manifest.first
 
           if before_modified_manifest && after_modified_manifest
