@@ -40,6 +40,7 @@ module RepoMiner
             added_manifests << {
               path: manifest_path,
               platform: manifest[0][:platform],
+              kind: manifest[0][:kind],
               added_dependencies: added,
               modified_dependencies: [],
               removed_dependencies: []
@@ -107,6 +108,7 @@ module RepoMiner
             modified_manifests << {
               path: manifest_path,
               platform: after_modified_manifest[:platform],
+              kind: after_modified_manifest[:kind],
               added_dependencies: added_dependencies,
               modified_dependencies: modified_dependencies,
               removed_dependencies: removed_dependencies
@@ -137,6 +139,7 @@ module RepoMiner
             removed_manifests << {
               path: manifest_path,
               platform: manifest[0][:platform],
+              kind: manifest[0][:kind],
               added_dependencies: [],
               modified_dependencies: [],
               removed_dependencies: removed

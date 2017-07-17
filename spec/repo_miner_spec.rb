@@ -23,6 +23,7 @@ RSpec.describe RepoMiner do
           {
             :path => "repo_miner.gemspec",
             :platform => "rubygems",
+            :kind=>"manifest",
             :added_dependencies => [
               {:name=>"bundler", :requirement=>"~> 1.14", :type=>:development},
               {:name=>"rake", :requirement=>"~> 10.0", :type=>:development},
@@ -45,6 +46,7 @@ RSpec.describe RepoMiner do
           {
             :path => "repo_miner.gemspec",
             :platform => "rubygems",
+            :kind=>"manifest",
             :added_dependencies => [],
             :modified_dependencies=>[
               {
