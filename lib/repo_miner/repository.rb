@@ -7,14 +7,14 @@ module RepoMiner
       @repo_path = repo_path
     end
 
-    def repository
+    def rugged_repository
       @repository ||= Rugged::Repository.new(repo_path)
     end
 
     def walk(branch)
-      @walker = Rugged::Walker.new(repository)
+      @walker = Rugged::Walker.new(rugged_repository)
       @walker.sorting(Rugged::SORT_TOPO | Rugged::SORT_REVERSE)
-      @walker.push(repository.branches[branch].target_id)
+      @walker.push(rugged_repository.branches[branch].target_id)
       @walker
     end
 

@@ -34,7 +34,7 @@ module RepoMiner
 
     def content_for_commit(rugged_commit, file_path)
       path = rugged_commit.tree.path(file_path)
-      blob = repository.repository.lookup(path[:oid])
+      blob = repository.rugged_repository.lookup(path[:oid])
       blob.content
     end
   end
