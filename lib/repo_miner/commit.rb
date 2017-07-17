@@ -38,7 +38,7 @@ module RepoMiner
     end
 
     def inspect
-      "RepoMiner::Commit:#{"0x00%x" % (object_id << 1)}(message: #{message}, sha: #{sha}, data: #{data})"
+      "<RepoMiner::Commit:#{"0x00%x" % (object_id << 1)}(message: '#{message}', sha: '#{sha}', data: #{data})>"
     end
 
     private
