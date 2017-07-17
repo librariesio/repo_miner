@@ -136,6 +136,8 @@ module RepoMiner
         commit.add_data(:dependencies, data)
       end
 
+      private
+
       def blob_paths(commit)
         paths = []
 
