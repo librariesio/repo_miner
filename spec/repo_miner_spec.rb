@@ -36,5 +36,29 @@ RSpec.describe RepoMiner do
         :removed_manifests => [],
       })
     end
+
+    it "finds modifications to existing dependencies" do
+      fifth_commit = analyser[4]
+      expect(fifth_commit.data[:dependencies]).to eq({
+        :added_manifests => [],
+        :modified_manifests => [
+          {
+            :path => "repo_miner.gemspec",
+            :platform => "rubygems",
+            :added_dependencies => [],
+            :modified_dependencies=>[
+              {
+                :name=>"rake",
+                :requirement=>"~> 12.0",
+                :type=>:development,
+                :previous_requirement=>"~> 10.0"
+              }
+            ],
+            :removed_dependencies=>[]
+          }
+        ],
+        :removed_manifests => [],
+      })
+    end
   end
 end

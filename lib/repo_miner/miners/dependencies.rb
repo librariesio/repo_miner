@@ -62,7 +62,13 @@ module RepoMiner
 
             added_dependency_names = after_dependencies.map{|d| d[:name] } - before_dependencies.map{|d| d[:name] }
             removed_dependency_names = before_dependencies.map{|d| d[:name] } - after_dependencies.map{|d| d[:name] }
-            modified_dependency_names = after_dependencies.map{|d| d[:name] } - added_dependency_names - removed_dependency_names
+
+            potentially_modified_dependency_names = after_dependencies.map{|d| d[:name] } - added_dependency_names - removed_dependency_names
+            modified_dependency_names = potentially_modified_dependency_names.select do |name|
+              after = after_dependencies.find{|d| d[:name] == name }
+              before = before_dependencies.find{|d| d[:name] == name }
+              (after[:requirement] != before[:requirement]) || (after[:type] != before[:type])
+            end
 
             # added_dependencies
             added_dependencies = added_dependency_names.map do |dep_name|
@@ -75,7 +81,18 @@ module RepoMiner
             end
 
             # modified_dependencies
-            modified_dependencies = []
+            modified_dependencies = modified_dependency_names.map do |dep_name|
+              after = after_dependencies.find{|d| d[:name] == dep_name }
+              before = before_dependencies.find{|d| d[:name] == dep_name }
+              dep_hash = {
+                name: dep_name,
+                requirement: after[:requirement],
+                type: after[:type]
+              }
+              dep_hash[:previous_requirement] = before[:requirement] if after[:requirement] != before[:requirement]
+              dep_hash[:previous_type] = before[:type] if after[:type] != before[:type]
+              dep_hash
+            end
 
             # removed_dependencies
             removed_dependencies = removed_dependency_names.map do |dep_name|
