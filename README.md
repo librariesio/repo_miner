@@ -1,5 +1,11 @@
 # RepoMiner
 
+[![Build Status](https://travis-ci.org/librariesio/repo_miner.svg?branch=master)](https://travis-ci.org/librariesio/repo_miner)
+[![Code Climate](https://img.shields.io/codeclimate/github/librariesio/repo_miner.svg?style=flat)](https://codeclimate.com/github/librariesio/repo_miner)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/github/librariesio/repo_miner.svg?style=flat)](https://codeclimate.com/github/librariesio/repo_miner)
+[![Code Climate](https://img.shields.io/codeclimate/issues/github/librariesio/repo_miner.svg)](https://codeclimate.com/github/librariesio/repo_miner/issues)
+[![license](https://img.shields.io/github/license/repo_miner/bibliothecary.svg)](https://github.com/librariesio/repo_miner/blob/master/LICENSE.txt)
+
 RepoMiner is a ruby library designed to mine time sensitive information from git repositories. Things like:
 
 - When dependencies are added/updated/removed
