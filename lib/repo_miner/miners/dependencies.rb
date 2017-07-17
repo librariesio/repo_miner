@@ -1,5 +1,4 @@
 require 'bibliothecary'
-require 'pp'
 
 module RepoMiner
   module Miners
