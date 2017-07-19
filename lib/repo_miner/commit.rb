@@ -18,6 +18,10 @@ module RepoMiner
       rugged_commit.oid
     end
 
+    def timestamp
+      rugged_commit.time
+    end
+
     def analyse
       Miners::Email.new.analyse(self)
       Miners::Dependencies.new.analyse(self)
