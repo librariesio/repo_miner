@@ -63,4 +63,11 @@ RSpec.describe RepoMiner do
       })
     end
   end
+
+  context "skipping already analysed commits" do
+    it "starts analysing after the 'since' commit" do
+      commits = RepoMiner.analyse('.', 'master', '00e7221')
+      expect(commits.first.sha).to eq('a827c92a035e787760851d57a59c46b847518fe5')
+    end
+  end
 end

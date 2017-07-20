@@ -9,7 +9,7 @@ end
 require 'rugged'
 
 module RepoMiner
-  def self.analyse(repo_path, branch = 'master')
-    Repository.new(repo_path).analyse(branch)
+  def self.analyse(repo_path, branch = 'master', since = nil)
+    Repository.new(repo_path).analyse(branch, since)
   end
 end
