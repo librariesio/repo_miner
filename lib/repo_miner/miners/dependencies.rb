@@ -4,6 +4,8 @@ module RepoMiner
   module Miners
     class Dependencies
       def analyse(commit)
+        return if commit.merge?
+
         all_paths = blob_paths(commit.rugged_commit)
 
         added_paths = all_paths.select{|path| path[:status] == :added }.map{|path| path[:path] }

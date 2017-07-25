@@ -22,6 +22,10 @@ module RepoMiner
       rugged_commit.time
     end
 
+    def merge?
+      rugged_commit.parents.length > 1
+    end
+
     def analyse
       Miners::Email.new.analyse(self)
       Miners::Dependencies.new.analyse(self)
