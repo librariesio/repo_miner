@@ -5,7 +5,7 @@ RSpec.describe RepoMiner do
     expect(RepoMiner::VERSION).not_to be nil
   end
 
-  context "when mining the Libraries.io repository" do
+  context "when mining the repo_miner repository" do
     let(:analyser) { RepoMiner.analyse('.') }
 
     it "mines email addresses" do
@@ -61,6 +61,13 @@ RSpec.describe RepoMiner do
         ],
         :removed_manifests => [],
       })
+    end
+
+    it "mines license data" do
+      initial_commit = analyser.first
+      expect(initial_commit.data[:licenses]).to eq([
+        {:path=>"LICENSE.txt", :key=>"agpl-3.0", :confidence=>100}
+      ])
     end
   end
 

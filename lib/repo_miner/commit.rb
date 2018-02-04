@@ -29,6 +29,7 @@ module RepoMiner
     def analyse
       Miners::Email.new.analyse(self)
       Miners::Dependencies.new.analyse(self)
+      Miners::Licenses.new.analyse(self)
 
       self
     end
