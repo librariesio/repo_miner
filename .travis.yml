@@ -1,8 +1,11 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.4.2
+- 2.4.2
 cache: bundler
 before_install: gem install bundler
 script:
-  - bundle exec rake spec && bundle exec codeclimate-test-reporter
+- bundle exec rake spec && bundle exec codeclimate-test-reporter
+notifications:
+  slack:
+    secure: bv3rhi7WsH11Hn92tFBLljQnW+UlVuSQIk5Q0BNnsdZHtEFvxsAOe9k8xmXJKNy4yF38hgwV11JWWA3z55az5CT2W9UGFCqNEOYQ49VIu8hPMrCvPVfRW5v9MMiDRI30GUMV6XCyISdySNhKN0g4627dn+S2SFkKt4OXkpZhM830HViH/OiUzncE5dv956PARfTBizv54ynhSmXe49RRe/CwAQap/A+8GRCJDFbNH0F4bZ1TPL1JkB8ZEJGAKDaJtdccBj4rQWjGpFZBN5sfEdyU9T6GnoOgUU6DOHapfwlKiqJQxVmPm8Us5brT+V3pXlRbfxaTK4wOysvh+Y1BT0dkJB3lJoKXdFl65wWwZTdajTLTUwRtFwKC1Q2d2x2IUPqqKvfVHkoPT4Mer7SKQiz3EyicG2ouY2QH9uJzTtSzeb6y3DFWqPrORRwl3jJ4oYinyPwpTFIz5hjpjW5puWWPSAqXpxVHgOzT0gISgtRcM5SVX4yqSeke1JJPob0YhKWjCttXI4P5p1HdA8v0oBIEu12Bwx6xBwE8O2ynm/c5rWhedS3ScnQh1quFHPBIwSEmQ5iZiHnwqYU0UHpm7XbJeXYQ7+x7wGLpoX94uepu1PZa8GRxh7kqgys2QuBuHh+yy3oqZRrbv5k39sdZJwYWBc7HAC7auBWtKBKK1pI=
